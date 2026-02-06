@@ -170,3 +170,26 @@ footer a {
 }
 
 footer a:hover { text-decoration: underline; }
+/* Embedded form container */
+.form-embed {
+  max-width: 720px;           /* keeps form readable */
+  margin: 0 auto;             /* center on page */
+  border: 2px solid rgba(0,0,0,0.12);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+/* Jotform iframe */
+.form-embed iframe {
+  width: 100%;
+  height: 1150px;             /* stable desktop height */
+  border: 0;
+}
+
+/* Mobile adjustment */
+@media (max-width: 768px) {
+  .form-embed iframe {
+    height: 1450px;
+  }
+}
