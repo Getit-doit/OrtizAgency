@@ -7,10 +7,6 @@
 
 * { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth; /* anchor scroll */
-}
-
 html, body {
   margin: 0;
   padding: 0;
@@ -19,7 +15,6 @@ html, body {
   color: var(--dark-gray);
 }
 
-/* Page wrapper */
 .page-wrapper {
   min-height: 100vh;
   margin: 16px;
@@ -29,7 +24,6 @@ html, body {
   overflow: hidden;
 }
 
-/* Navigation */
 nav {
   display: flex;
   gap: 18px;
@@ -51,7 +45,7 @@ nav a.active {
   border-bottom: 3px solid var(--farmers-red);
 }
 
-/* Hero */
+/* HERO */
 .hero {
   padding: 70px 20px 40px;
   text-align: center;
@@ -61,7 +55,7 @@ nav a.active {
 
 .hero h1 {
   font-size: 2.6rem;
-  margin-bottom: 10px;
+  margin: 0 0 10px;
 }
 
 .hero p {
@@ -77,10 +71,7 @@ nav a.active {
   justify-content: center;
 }
 
-.skyline-svg {
-  width: 100%;
-  max-width: 900px;
-}
+.skyline-svg { width: 100%; max-width: 900px; }
 
 .skyline-stroke {
   stroke: rgba(255,255,255,0.85);
@@ -90,7 +81,7 @@ nav a.active {
   stroke-linejoin: round;
 }
 
-/* Simple draw animation */
+/* Draw animation */
 .draw-slow, .draw-med {
   stroke-dasharray: 1200;
   stroke-dashoffset: 1200;
@@ -103,23 +94,17 @@ nav a.active {
 @keyframes drawLine { to { stroke-dashoffset: 0; } }
 
 @media (prefers-reduced-motion: reduce) {
-  .draw-slow, .draw-med {
-    animation: none;
-    stroke-dashoffset: 0;
-  }
+  .draw-slow, .draw-med { animation: none; stroke-dashoffset: 0; }
 }
 
-/* Sections */
+/* Content sections */
 .importance-section {
   padding: 50px 20px;
   max-width: 900px;
   margin: 0 auto;
 }
 
-.importance-section h2 {
-  color: var(--farmers-blue);
-  margin-bottom: 12px;
-}
+.importance-section h2 { color: var(--farmers-blue); }
 
 /* Cards */
 .insurance-types {
@@ -156,14 +141,15 @@ nav a.active {
   margin: 0 0 8px;
 }
 
-/* Jump-to-quote button section */
+/* CTA section after services */
 .quote-jump {
   display: flex;
-  justify-content: center;
-  padding: 10px 20px 40px;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 20px 55px;
+  gap: 12px;
 }
 
-/* Square button */
 .square-btn {
   display: inline-flex;
   align-items: center;
@@ -187,7 +173,15 @@ nav a.active {
   opacity: 0.96;
 }
 
-/* Embedded form section */
+.quote-note {
+  margin: 0;
+  color: #444;
+  font-size: 14px;
+  text-align: center;
+  max-width: 640px;
+}
+
+/* Quote page embed */
 .quote-embed-section {
   padding: 50px 20px 60px;
   max-width: 900px;
@@ -195,7 +189,7 @@ nav a.active {
   text-align: center;
 }
 
-.quote-embed-section h2 {
+.quote-embed-section h1 {
   color: var(--farmers-blue);
   margin-bottom: 6px;
 }
@@ -205,7 +199,7 @@ nav a.active {
   color: #444;
 }
 
-/* Jotform iframe */
+/* Embedded form */
 .form-embed {
   border: 2px solid rgba(0,0,0,0.1);
   border-radius: 10px;
@@ -213,7 +207,7 @@ nav a.active {
   background: #fff;
 }
 
-/* Fallback height; auto-height handler will override as needed */
+/* Fallback height; embed handler adjusts dynamically */
 .form-embed iframe {
   width: 100%;
   height: 950px;
@@ -235,6 +229,4 @@ footer a {
   font-weight: 700;
 }
 
-footer a:hover {
-  text-decoration: underline;
-}
+footer a:hover { text-decoration: underline; }
