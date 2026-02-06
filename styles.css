@@ -2,8 +2,8 @@
    Farmers Color Palette
    ========================= */
 :root {
-  --farmers-blue: #003a8f;   /* Deep Farmers-style blue */
-  --farmers-red: #c8102e;    /* Farmers red */
+  --farmers-blue: #003a8f;
+  --farmers-red: #c8102e;
   --light-gray: #f3f3f3;
   --dark-gray: #111;
 }
@@ -21,9 +21,7 @@ html, body {
   color: var(--dark-gray);
 }
 
-/* =========================
-   Page Border Wrapper
-   ========================= */
+/* Page border */
 .page-wrapper {
   min-height: 100vh;
   margin: 16px;
@@ -33,9 +31,7 @@ html, body {
   overflow: hidden;
 }
 
-/* =========================
-   Navigation
-   ========================= */
+/* Navigation */
 nav {
   display: flex;
   gap: 24px;
@@ -44,37 +40,26 @@ nav {
 }
 
 nav a {
-  text-decoration: none;
   color: #ffffff;
+  text-decoration: none;
   font-weight: 600;
-  padding-bottom: 4px;
-}
-
-nav a:hover {
-  opacity: 0.85;
 }
 
 nav a.active {
   border-bottom: 3px solid var(--farmers-red);
 }
 
-/* =========================
-   Hero Section
-   ========================= */
+/* Hero */
 .hero {
-  padding: 70px 20px;
+  padding: 70px 20px 50px;
   text-align: center;
-  background: linear-gradient(
-    135deg,
-    var(--farmers-blue),
-    #002b6f
-  );
+  background: linear-gradient(135deg, var(--farmers-blue), #002b6f);
   color: #ffffff;
 }
 
 .hero h1 {
-  margin-bottom: 12px;
-  font-size: 2.5rem;
+  font-size: 2.6rem;
+  margin-bottom: 10px;
 }
 
 .hero p {
@@ -82,9 +67,21 @@ nav a.active {
   opacity: 0.95;
 }
 
-/* =========================
-   Content Sections
-   ========================= */
+/* Skyline */
+.skyline {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+}
+
+.skyline svg {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Content sections */
 .importance-section {
   padding: 50px 20px;
   max-width: 900px;
@@ -96,9 +93,7 @@ nav a.active {
   margin-bottom: 12px;
 }
 
-/* =========================
-   Insurance Cards
-   ========================= */
+/* Insurance cards */
 .insurance-types {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -133,9 +128,7 @@ nav a.active {
   color: var(--farmers-red);
 }
 
-/* =========================
-   Footer
-   ========================= */
+/* Footer */
 footer {
   border-top: 3px solid var(--farmers-red);
   padding: 18px;
@@ -149,8 +142,4 @@ footer a {
   text-decoration: none;
   font-weight: 600;
   margin-left: 10px;
-}
-
-footer a:hover {
-  text-decoration: underline;
 }
