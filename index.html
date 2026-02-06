@@ -19,6 +19,10 @@
       <a href="index.html" class="active">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
+
+      <!-- Anchor link to embedded quote section -->
+      <a href="#quote" id="quoteNavLink">Get a Quote</a>
+
       <a href="privacy-policy.html">Privacy Policy</a>
     </nav>
 
@@ -28,58 +32,24 @@
         <h1>Welcome to Ortiz Agency</h1>
         <p>Your Trusted Insurance Partner in Arlington, Texas</p>
 
-        <!-- Arlington Skyline (animated line art; stylized landmarks) -->
+        <!-- Arlington Skyline -->
         <div class="skyline" aria-hidden="true">
           <svg class="skyline-svg" viewBox="0 0 1200 170" xmlns="http://www.w3.org/2000/svg">
-            <!-- Ground line -->
             <path class="skyline-stroke draw-slow" d="M0 135 L1200 135" fill="none"/>
-
-            <!-- Buildings -->
             <path class="skyline-stroke draw-med"
               d="M60 135 L60 110 L95 110 L95 135
                  M110 135 L110 95 L145 95 L145 135
                  M165 135 L165 105 L190 105 L190 135
-                 M210 135 L210 85 L255 85 L255 135
-                 M270 135 L270 115 L300 115 L300 135
-                 M320 135 L320 100 L350 100 L350 135"
+                 M210 135 L210 85 L255 85 L255 135"
               fill="none"/>
-
-            <!-- Stadium 1 (generic arch) -->
             <path class="skyline-stroke draw-slow"
               d="M410 135 L410 120
                  C410 85, 520 85, 520 120
                  L520 135"
               fill="none"/>
-
-            <!-- Stadium 2 (generic roof) -->
-            <path class="skyline-stroke draw-slow"
-              d="M560 135 L560 115
-                 L600 95 L680 95
-                 L720 115 L720 135"
-              fill="none"/>
-
-            <!-- Six Flags (Ferris wheel) -->
             <path class="skyline-stroke draw-med"
               d="M820 135 L820 120
                  A35 35 0 1 1 819.9 120"
-              fill="none"/>
-
-            <!-- Wheel spokes -->
-            <path class="skyline-stroke draw-fast"
-              d="M820 120 L820 85
-                 M820 120 L855 120
-                 M820 120 L785 120
-                 M820 120 L845 95
-                 M820 120 L795 95
-                 M820 120 L845 145
-                 M820 120 L795 145"
-              fill="none"/>
-
-            <!-- Coaster hill -->
-            <path class="skyline-stroke draw-med"
-              d="M880 135
-                 C910 120, 940 120, 970 135
-                 C995 148, 1015 148, 1040 135"
               fill="none"/>
           </svg>
         </div>
@@ -110,7 +80,7 @@
         <div class="insurance-card">
           <div class="icon-wrapper"><i class="fas fa-car"></i></div>
           <h3>Auto Insurance</h3>
-          <p>Reliable auto protection for families.</p>
+          <p>Reliable auto protection.</p>
         </div>
 
         <div class="insurance-card">
@@ -120,32 +90,34 @@
         </div>
 
         <div class="insurance-card">
-          <div class="icon-wrapper"><i class="fas fa-caravan"></i></div>
-          <h3>RV Insurance</h3>
-          <p>Coverage for life on the road.</p>
-        </div>
-
-        <div class="insurance-card">
           <div class="icon-wrapper"><i class="fas fa-building"></i></div>
           <h3>Commercial Insurance</h3>
           <p>Protection designed for businesses.</p>
         </div>
       </section>
 
-      <!-- CTA AFTER SERVICES (reliable: open Jotform in new tab) -->
-      <section class="quote-section">
-        <a
-          class="square-btn"
-          href="https://form.jotform.com/260355748814060"
-          target="_blank"
-          rel="noopener"
-          aria-label="Open quote form in a new tab"
-        >
-          Get a Quote
-        </a>
-        <p class="quote-note">
-          Prefer to talk? Call us and we’ll help you quickly.
+      <!-- Optional: a centered button that scrolls to the embedded form -->
+      <section class="quote-jump">
+        <a class="square-btn" href="#quote" id="quoteScrollBtn">Get a Quote</a>
+      </section>
+
+      <!-- EMBEDDED QUOTE FORM -->
+      <section id="quote" class="quote-embed-section">
+        <h2>Get a Quote</h2>
+        <p class="quote-subtext">
+          Complete the form below and a member of our team will follow up shortly.
         </p>
+
+        <div class="form-embed">
+          <iframe
+            id="JotFormIFrame-260355748814060"
+            title="Ortiz Agency Intake Form"
+            src="https://form.jotform.com/260355748814060"
+            allow="geolocation; microphone; camera"
+            frameborder="0"
+            scrolling="no"
+          ></iframe>
+        </div>
       </section>
     </main>
 
@@ -157,7 +129,53 @@
   </div>
 
   <script>
+    // Year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // -------- Conversion Tracking Hooks (works with GA4 if installed) --------
+    // If you later add GA4, call: gtag('event', 'event_name', {...})
+    function trackEvent(name, params) {
+      if (typeof window.gtag === "function") {
+        window.gtag("event", name, params || {});
+      } else {
+        // Safe fallback so nothing breaks
+        console.log("[trackEvent]", name, params || {});
+      }
+    }
+
+    // Track clicks to quote section
+    ["quoteNavLink", "quoteScrollBtn"].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.addEventListener("click", function() {
+          trackEvent("quote_click", { placement: id });
+        });
+      }
+    });
+
+    // Track when the quote section is viewed (50% visible)
+    var quoteSection = document.getElementById("quote");
+    if (quoteSection && "IntersectionObserver" in window) {
+      var seen = false;
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (!seen && entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            seen = true;
+            trackEvent("quote_view", { section: "quote" });
+          }
+        });
+      }, { threshold: [0.5] });
+      io.observe(quoteSection);
+    }
+  </script>
+
+  <!-- Auto-height resizing for Jotform embed -->
+  <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+  <script>
+    window.jotformEmbedHandler(
+      "iframe[id='JotFormIFrame-260355748814060']",
+      "https://form.jotform.com/"
+    );
   </script>
 </body>
 </html>
