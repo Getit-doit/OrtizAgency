@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get a Quote | Ortiz Agency</title>
+  <meta name="description" content="Request an insurance quote from Ortiz Agency." />
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="quote.html" class="active">Get a Quote</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </nav>
+
+    <main class="importance-section">
+      <h1>Get a Quote</h1>
+      <p>Please complete the form below. If you prefer, call our office and we’ll help you quickly.</p>
+
+      <div class="form-embed">
+        <iframe
+          id="JotFormIFrame-260355748814060"
+          title="Ortiz Agency Intake Form"
+          onload="window.parent.scrollTo(0,0)"
+          allow="geolocation; microphone; camera"
+          src="https://form.jotform.com/260355748814060"
+          frameborder="0"
+          style="width:100%; height: 900px; border:0;"
+          scrolling="no"
+        ></iframe>
+      </div>
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> Ortiz Agency. All rights reserved.</p>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
