@@ -143,3 +143,31 @@ footer a {
   font-weight: 600;
   margin-left: 10px;
 }
+CTA section */
+.quote-section {
+  text-align: center;
+  padding: 10px 20px 50px;
+}
+
+/* Pill button */
+.pill-btn {
+  display: inline-block;
+  padding: 14px 26px;
+  border-radius: 999px;
+  background: var(--farmers-red);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.pill-btn-lg {
+  font-size: 16px;
+}
+
+.pill-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.2);
+  opacity: 0.95;
+}
