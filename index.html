@@ -133,25 +133,39 @@
 
   <!-- JOTFORM LIGHTBOX -->
   <script src="https://cdn.jotfor.ms/s/static/latest/static/feedback2.js"></script>
-  <script>
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    // 1) Verify Jotform script loaded
+    if (typeof JotformFeedback === "undefined") {
+      console.error("JotformFeedback not found. feedback2.js may not have loaded.");
+      return;
+    }
+
+    // 2) Create the lightbox instance
     var JF_Quote = new JotformFeedback({
       formId: "260355748814060",
       base: "https://form.jotform.com/",
       windowTitle: "Ortiz Agency Intake Form",
-      background: "#003a8f",   // Farmers Blue
+      background: "#003a8f",
       fontColor: "#FFFFFF",
-      type: "2",              // Lightbox
+      type: "2",          // lightbox/modal
       height: 700,
       width: 900,
       openOnLoad: false
     });
 
-    document.getElementById("quoteBtn").addEventListener("click", function(e) {
+    // 3) Attach click handler to the button
+    var btn = document.getElementById("quoteBtn");
+    if (!btn) {
+      console.error("Button with id='quoteBtn' not found. Check your HTML id.");
+      return;
+    }
+
+    btn.addEventListener("click", function (e) {
       e.preventDefault();
       JF_Quote.open();
     });
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  });
+</script>
 </body>
 </html>
