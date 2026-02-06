@@ -9,9 +9,7 @@
 }
 
 /* Global reset */
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 html, body {
   margin: 0;
@@ -34,16 +32,20 @@ html, body {
 /* Navigation */
 nav {
   display: flex;
-  gap: 24px;
+  gap: 18px;
   padding: 18px 24px;
   background: var(--farmers-blue);
+  flex-wrap: wrap;
 }
 
 nav a {
   color: #ffffff;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
+  padding-bottom: 4px;
 }
+
+nav a:hover { opacity: 0.9; }
 
 nav a.active {
   border-bottom: 3px solid var(--farmers-red);
@@ -51,7 +53,7 @@ nav a.active {
 
 /* Hero */
 .hero {
-  padding: 70px 20px 50px;
+  padding: 70px 20px 40px;
   text-align: center;
   background: linear-gradient(135deg, var(--farmers-blue), #002b6f);
   color: #ffffff;
@@ -59,26 +61,59 @@ nav a.active {
 
 .hero h1 {
   font-size: 2.6rem;
-  margin-bottom: 10px;
+  margin: 0 0 10px;
 }
 
 .hero p {
+  margin: 0 0 8px;
   font-size: 1.1rem;
   opacity: 0.95;
 }
 
 /* Skyline */
 .skyline {
-  margin-top: 28px;
+  margin-top: 26px;
   display: flex;
   justify-content: center;
 }
 
-.skyline svg {
+.skyline-svg {
   width: 100%;
-  max-width: 900px;
+  max-width: 980px;
   height: auto;
-  color: rgba(255, 255, 255, 0.85);
+}
+
+.skyline-stroke {
+  stroke: rgba(255, 255, 255, 0.88);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* Draw animation */
+.draw-fast, .draw-med, .draw-slow {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation-name: drawLine;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+.draw-fast { animation-duration: 1.2s; animation-delay: 0.15s; }
+.draw-med  { animation-duration: 2.0s; animation-delay: 0.10s; }
+.draw-slow { animation-duration: 3.2s; animation-delay: 0.05s; }
+
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .draw-fast, .draw-med, .draw-slow {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
 }
 
 /* Content sections */
@@ -100,7 +135,7 @@ nav a.active {
   gap: 24px;
   padding: 20px;
   max-width: 1100px;
-  margin: 0 auto 50px;
+  margin: 0 auto 10px;
 }
 
 .insurance-card {
@@ -119,13 +154,57 @@ nav a.active {
 
 .insurance-card h3 {
   color: var(--farmers-blue);
-  margin-bottom: 8px;
+  margin: 0 0 8px;
 }
 
 .icon-wrapper {
   font-size: 34px;
   margin-bottom: 14px;
   color: var(--farmers-red);
+}
+
+/* Quote CTA section */
+.quote-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 20px 55px;
+  gap: 12px;
+}
+
+/* Square button */
+.square-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px 28px;
+  min-width: 220px;
+
+  background: var(--farmers-red);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 900;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+
+  border-radius: 6px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.20);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.square-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+  opacity: 0.96;
+}
+
+.quote-note {
+  margin: 0;
+  color: #444;
+  font-size: 14px;
+  text-align: center;
+  max-width: 640px;
 }
 
 /* Footer */
@@ -140,54 +219,8 @@ footer {
 footer a {
   color: var(--farmers-blue);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   margin-left: 10px;
 }
-CTA section */
-.quote-section {
-  text-align: center;
-  padding: 10px 20px 50px;
-}
 
-/* Quote CTA section */
-.quote-section {
-  display: flex;
-  justify-content: center;
-  padding: 10px 20px 50px;
-}
-
-/* Square button */
-.square-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 16px 28px;
-  min-width: 200px;
-
-  background: var(--farmers-red);
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-
-  border-radius: 6px;              /* square w/ slight radius */
-  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
-  transition: transform 0.15s ease,
-              box-shadow 0.15s ease,
-              opacity 0.15s ease;
-}
-
-.square-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.25);
-  opacity: 0.95;
-}
-.form-embed {
-  margin-top: 18px;
-  border: 2px solid rgba(0,0,0,0.08);
-  border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
-}
+footer a:hover { text-decoration: underline; }
