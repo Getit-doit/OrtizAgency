@@ -14,25 +14,19 @@
 <body>
   <div class="page-wrapper">
 
-    <!-- NAV -->
     <nav>
       <a href="index.html" class="active">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
-
-      <!-- Anchor link to embedded quote section -->
-      <a href="#quote" id="quoteNavLink">Get a Quote</a>
-
+      <a href="quote.html" id="quoteNavLink">Get a Quote</a>
       <a href="privacy-policy.html">Privacy Policy</a>
     </nav>
 
     <main>
-      <!-- HERO -->
       <section class="hero">
         <h1>Welcome to Ortiz Agency</h1>
         <p>Your Trusted Insurance Partner in Arlington, Texas</p>
 
-        <!-- Arlington Skyline -->
         <div class="skyline" aria-hidden="true">
           <svg class="skyline-svg" viewBox="0 0 1200 170" xmlns="http://www.w3.org/2000/svg">
             <path class="skyline-stroke draw-slow" d="M0 135 L1200 135" fill="none"/>
@@ -55,7 +49,6 @@
         </div>
       </section>
 
-      <!-- ABOUT -->
       <section id="about" class="importance-section">
         <h2>The Importance of Insurance</h2>
         <p>
@@ -69,7 +62,6 @@
         </p>
       </section>
 
-      <!-- SERVICES -->
       <section id="services" class="insurance-types">
         <div class="insurance-card">
           <div class="icon-wrapper"><i class="fas fa-home"></i></div>
@@ -96,28 +88,10 @@
         </div>
       </section>
 
-      <!-- Optional: a centered button that scrolls to the embedded form -->
+      <!-- CTA after product boxes -->
       <section class="quote-jump">
-        <a class="square-btn" href="#quote" id="quoteScrollBtn">Get a Quote</a>
-      </section>
-
-      <!-- EMBEDDED QUOTE FORM -->
-      <section id="quote" class="quote-embed-section">
-        <h2>Get a Quote</h2>
-        <p class="quote-subtext">
-          Complete the form below and a member of our team will follow up shortly.
-        </p>
-
-        <div class="form-embed">
-          <iframe
-            id="JotFormIFrame-260355748814060"
-            title="Ortiz Agency Intake Form"
-            src="https://form.jotform.com/260355748814060"
-            allow="geolocation; microphone; camera"
-            frameborder="0"
-            scrolling="no"
-          ></iframe>
-        </div>
+        <a class="square-btn" href="quote.html" id="quoteBtn">Get a Quote</a>
+        <p class="quote-note">You’ll complete a short intake form on the next page.</p>
       </section>
     </main>
 
@@ -129,53 +103,18 @@
   </div>
 
   <script>
-    // Year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // -------- Conversion Tracking Hooks (works with GA4 if installed) --------
-    // If you later add GA4, call: gtag('event', 'event_name', {...})
+    // Tracking hooks (logs to console unless GA4 gtag exists)
     function trackEvent(name, params) {
-      if (typeof window.gtag === "function") {
-        window.gtag("event", name, params || {});
-      } else {
-        // Safe fallback so nothing breaks
-        console.log("[trackEvent]", name, params || {});
-      }
+      if (typeof window.gtag === "function") window.gtag("event", name, params || {});
+      else console.log("[trackEvent]", name, params || {});
     }
 
-    // Track clicks to quote section
-    ["quoteNavLink", "quoteScrollBtn"].forEach(function(id) {
+    ["quoteNavLink", "quoteBtn"].forEach(function(id){
       var el = document.getElementById(id);
-      if (el) {
-        el.addEventListener("click", function() {
-          trackEvent("quote_click", { placement: id });
-        });
-      }
+      if (el) el.addEventListener("click", function(){ trackEvent("quote_click", { placement: id }); });
     });
-
-    // Track when the quote section is viewed (50% visible)
-    var quoteSection = document.getElementById("quote");
-    if (quoteSection && "IntersectionObserver" in window) {
-      var seen = false;
-      var io = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (!seen && entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-            seen = true;
-            trackEvent("quote_view", { section: "quote" });
-          }
-        });
-      }, { threshold: [0.5] });
-      io.observe(quoteSection);
-    }
-  </script>
-
-  <!-- Auto-height resizing for Jotform embed -->
-  <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
-  <script>
-    window.jotformEmbedHandler(
-      "iframe[id='JotFormIFrame-260355748814060']",
-      "https://form.jotform.com/"
-    );
   </script>
 </body>
 </html>
