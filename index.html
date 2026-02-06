@@ -19,6 +19,7 @@
       <a href="index.html" class="active">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
     </nav>
 
     <main>
@@ -27,44 +28,59 @@
         <h1>Welcome to Ortiz Agency</h1>
         <p>Your Trusted Insurance Partner in Arlington, Texas</p>
 
-        <!-- Arlington Skyline -->
+        <!-- Arlington Skyline (animated line art; stylized landmarks) -->
         <div class="skyline" aria-hidden="true">
           <svg class="skyline-svg" viewBox="0 0 1200 170" xmlns="http://www.w3.org/2000/svg">
-            <path class="skyline-stroke draw-slow" d="M0 135 L1200 135" />
+            <!-- Ground line -->
+            <path class="skyline-stroke draw-slow" d="M0 135 L1200 135" fill="none"/>
 
+            <!-- Buildings -->
             <path class="skyline-stroke draw-med"
               d="M60 135 L60 110 L95 110 L95 135
                  M110 135 L110 95 L145 95 L145 135
                  M165 135 L165 105 L190 105 L190 135
                  M210 135 L210 85 L255 85 L255 135
                  M270 135 L270 115 L300 115 L300 135
-                 M320 135 L320 100 L350 100 L350 135" />
+                 M320 135 L320 100 L350 100 L350 135"
+              fill="none"/>
 
-            <!-- Stadiums -->
+            <!-- Stadium 1 (generic arch) -->
             <path class="skyline-stroke draw-slow"
               d="M410 135 L410 120
                  C410 85, 520 85, 520 120
-                 L520 135" />
+                 L520 135"
+              fill="none"/>
 
+            <!-- Stadium 2 (generic roof) -->
             <path class="skyline-stroke draw-slow"
               d="M560 135 L560 115
                  L600 95 L680 95
-                 L720 115 L720 135" />
+                 L720 115 L720 135"
+              fill="none"/>
 
-            <!-- Six Flags (Ferris wheel + coaster) -->
+            <!-- Six Flags (Ferris wheel) -->
             <path class="skyline-stroke draw-med"
               d="M820 135 L820 120
-                 A35 35 0 1 1 819.9 120" />
+                 A35 35 0 1 1 819.9 120"
+              fill="none"/>
 
+            <!-- Wheel spokes -->
             <path class="skyline-stroke draw-fast"
               d="M820 120 L820 85
                  M820 120 L855 120
-                 M820 120 L785 120" />
+                 M820 120 L785 120
+                 M820 120 L845 95
+                 M820 120 L795 95
+                 M820 120 L845 145
+                 M820 120 L795 145"
+              fill="none"/>
 
+            <!-- Coaster hill -->
             <path class="skyline-stroke draw-med"
               d="M880 135
                  C910 120, 940 120, 970 135
-                 C995 148, 1015 148, 1040 135" />
+                 C995 148, 1015 148, 1040 135"
+              fill="none"/>
           </svg>
         </div>
       </section>
@@ -116,12 +132,22 @@
         </div>
       </section>
 
-      <!-- CTA AFTER SERVICES -->
-<section class="quote-section">
-  <a href="#" id="quoteBtn" class="square-btn">
-    Get a Quote
-  </a>
-</section>
+      <!-- CTA AFTER SERVICES (reliable: open Jotform in new tab) -->
+      <section class="quote-section">
+        <a
+          class="square-btn"
+          href="https://form.jotform.com/260355748814060"
+          target="_blank"
+          rel="noopener"
+          aria-label="Open quote form in a new tab"
+        >
+          Get a Quote
+        </a>
+        <p class="quote-note">
+          Prefer to talk? Call us and we’ll help you quickly.
+        </p>
+      </section>
+    </main>
 
     <footer>
       <p>© <span id="year"></span> Ortiz Agency. All rights reserved.</p>
@@ -130,41 +156,8 @@
 
   </div>
 
-  <!-- JOTFORM LIGHTBOX -->
-  <script src="https://cdn.jotfor.ms/s/static/latest/static/feedback2.js"></script>
-<script>
-  window.addEventListener("DOMContentLoaded", function () {
-    // 1) Verify Jotform script loaded
-    if (typeof JotformFeedback === "undefined") {
-      console.error("JotformFeedback not found. feedback2.js may not have loaded.");
-      return;
-    }
-
-    // 2) Create the lightbox instance
-    var JF_Quote = new JotformFeedback({
-      formId: "260355748814060",
-      base: "https://form.jotform.com/",
-      windowTitle: "Ortiz Agency Intake Form",
-      background: "#003a8f",
-      fontColor: "#FFFFFF",
-      type: "2",          // lightbox/modal
-      height: 700,
-      width: 900,
-      openOnLoad: false
-    });
-
-    // 3) Attach click handler to the button
-    var btn = document.getElementById("quoteBtn");
-    if (!btn) {
-      console.error("Button with id='quoteBtn' not found. Check your HTML id.");
-      return;
-    }
-
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
-      JF_Quote.open();
-    });
-  });
-</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
