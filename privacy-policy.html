@@ -5,14 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy | Ortiz Agency</title>
 
-  <meta name="description" content="Privacy Policy for Ortiz Agency insurance services." />
+  <meta name="description" content="Privacy Policy, TCPA/SMS consent, and Texas privacy disclosures for Ortiz Agency." />
 
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Print-friendly overrides -->
+  <style>
+    @media print {
+      nav,
+      footer,
+      .print-hidden {
+        display: none !important;
+      }
+
+      body {
+        background: #ffffff;
+      }
+
+      .page-wrapper {
+        margin: 0;
+        border: none;
+        border-radius: 0;
+      }
+
+      main {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      h1, h2 {
+        page-break-after: avoid;
+      }
+
+      p {
+        font-size: 12pt;
+        line-height: 1.5;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <div class="page-wrapper">
-    <nav>
+    <nav class="print-hidden">
       <a href="index.html">Home</a>
       <a href="privacy-policy.html" class="active">Privacy Policy</a>
     </nav>
@@ -24,64 +59,97 @@
       <p>
         Ortiz Agency respects your privacy and is committed to protecting the personal
         information you share with us. This Privacy Policy explains how information is
-        collected, used, and safeguarded when you visit this website or contact us
-        regarding insurance products and services.
+        collected, used, disclosed, and safeguarded when you visit this website or contact
+        us regarding insurance products and services.
       </p>
 
       <h2>Information We Collect</h2>
       <p>
-        We may collect personal information that you voluntarily provide to us, such as
-        your name, phone number, email address, and other contact details. If you request
-        a quote or insurance information, we may also collect relevant details needed to
-        respond to your request.
+        We may collect personal information that you voluntarily provide to us, including
+        your name, phone number, email address, mailing address, and other contact details.
+        If you request a quote or insurance information, we may collect additional details
+        necessary to evaluate coverage options and respond to your request.
       </p>
       <p>
-        In addition, limited technical information such as browser type, device
-        information, or pages visited may be collected automatically if website analytics
-        tools are enabled.
+        We may also collect limited technical information automatically, such as browser
+        type, device information, and pages visited, to help improve website functionality
+        and performance.
       </p>
 
       <h2>How We Use Information</h2>
       <p>
-        The information we collect is used to respond to inquiries, provide insurance
-        quotes, assist with policy services, and communicate with you about your request.
-        Information may also be used to improve website functionality and user experience.
+        Information collected is used to respond to inquiries, provide insurance quotes,
+        service policies, communicate with you regarding your request, and maintain our
+        business relationship. Information may also be used for internal business purposes,
+        including improving our services and website experience.
       </p>
 
       <h2>Information Sharing</h2>
       <p>
         Ortiz Agency does not sell or rent your personal information. Information may be
-        shared only with insurance carriers, service providers, or other parties when
-        necessary to fulfill your request, provide insurance services, or comply with
-        applicable laws and regulations.
+        shared with insurance carriers, service providers, or other third parties only as
+        necessary to provide requested insurance services, comply with legal obligations,
+        or protect against fraud or unauthorized activity.
+      </p>
+
+      <h2>TCPA & SMS/Text Messaging Consent</h2>
+      <p>
+        By providing your telephone number to Ortiz Agency, you expressly consent to be
+        contacted by Ortiz Agency, its representatives, or affiliated service providers by
+        telephone call or text message, including through the use of automated dialing
+        systems or prerecorded messages, for purposes related to insurance quotes,
+        coverage information, policy servicing, and customer support, in accordance with
+        the Telephone Consumer Protection Act (TCPA).
+      </p>
+      <p>
+        Consent to receive calls or text messages is not a condition of purchasing any
+        insurance product. Message and data rates may apply depending on your mobile
+        carrier. You may opt out of SMS communications at any time by replying “STOP” to
+        any text message or by contacting Ortiz Agency directly.
+      </p>
+
+      <h2>Texas-Specific Privacy Notice</h2>
+      <p>
+        For residents of the State of Texas, Ortiz Agency complies with applicable Texas
+        privacy laws and insurance regulations governing the collection, use, and sharing
+        of personal information. Nonpublic personal information is collected and disclosed
+        only as permitted by law and for purposes directly related to insurance transactions,
+        underwriting, servicing, or claims handling.
+      </p>
+      <p>
+        Texas residents may request information regarding the personal data we maintain,
+        request corrections to inaccurate information, or inquire about our information
+        practices by contacting Ortiz Agency using the information provided below.
       </p>
 
       <h2>Data Security</h2>
       <p>
-        We use reasonable administrative, technical, and physical safeguards designed to
-        protect your information from unauthorized access, disclosure, or misuse.
-        However, no method of data transmission or storage can be guaranteed to be
-        completely secure.
+        We maintain reasonable administrative, technical, and physical safeguards designed
+        to protect personal information from unauthorized access, disclosure, alteration,
+        or misuse. While we strive to protect your information, no method of transmission
+        over the internet or electronic storage is completely secure.
       </p>
 
       <h2>Children’s Privacy</h2>
       <p>
-        This website is not intended for children under the age of 13. We do not knowingly
-        collect personal information from children under 13.
+        This website is not intended for children under the age of 13. Ortiz Agency does not
+        knowingly collect personal information from children under 13.
       </p>
 
       <h2>Contact Information</h2>
       <p>
-        If you have questions about this Privacy Policy or how your information is handled,
-        please contact Ortiz Agency directly.
+        If you have questions about this Privacy Policy, TCPA consent, or our information
+        practices, please contact Ortiz Agency directly.
       </p>
 
-      <p style="margin-top: 2rem;">
+      <p class="print-hidden" style="margin-top: 2rem;">
         <a href="index.html">← Back to Home</a>
+        &nbsp;|&nbsp;
+        <a href="#" onclick="window.print(); return false;">Print this page</a>
       </p>
     </main>
 
-    <footer>
+    <footer class="print-hidden">
       <p>© <span id="year"></span> Ortiz Agency</p>
     </footer>
   </div>
