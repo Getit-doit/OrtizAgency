@@ -19,9 +19,6 @@
       <a href="index.html" class="active">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
-
-      <!-- Nav CTA -->
-      <a href="#" id="quoteBtnNav" class="pill-btn">Get a Quote</a>
     </nav>
 
     <main>
@@ -30,20 +27,11 @@
         <h1>Welcome to Ortiz Agency</h1>
         <p>Your Trusted Insurance Partner in Arlington, Texas</p>
 
-        <!-- HERO CTA -->
-        <div class="hero-cta-row">
-          <a href="#" id="quoteBtnHero" class="pill-btn pill-btn-lg">
-            Get a Quote
-          </a>
-        </div>
-
-        <!-- Arlington Skyline (animated line art) -->
+        <!-- Arlington Skyline -->
         <div class="skyline" aria-hidden="true">
           <svg class="skyline-svg" viewBox="0 0 1200 170" xmlns="http://www.w3.org/2000/svg">
-            <path class="skyline-stroke draw-slow"
-              d="M0 135 L1200 135" />
+            <path class="skyline-stroke draw-slow" d="M0 135 L1200 135" />
 
-            <!-- Buildings -->
             <path class="skyline-stroke draw-med"
               d="M60 135 L60 110 L95 110 L95 135
                  M110 135 L110 95 L145 95 L145 135
@@ -52,34 +40,27 @@
                  M270 135 L270 115 L300 115 L300 135
                  M320 135 L320 100 L350 100 L350 135" />
 
-            <!-- Stadium (arched roof – generic) -->
+            <!-- Stadiums -->
             <path class="skyline-stroke draw-slow"
               d="M410 135 L410 120
                  C410 85, 520 85, 520 120
-                 L520 135
-                 M430 120
-                 C430 95, 500 95, 500 120" />
+                 L520 135" />
 
-            <!-- Stadium 2 -->
             <path class="skyline-stroke draw-slow"
               d="M560 135 L560 115
                  L600 95 L680 95
                  L720 115 L720 135" />
 
-            <!-- Six Flags – ferris wheel -->
+            <!-- Six Flags (Ferris wheel + coaster) -->
             <path class="skyline-stroke draw-med"
               d="M820 135 L820 120
                  A35 35 0 1 1 819.9 120" />
 
-            <!-- Ferris wheel spokes -->
             <path class="skyline-stroke draw-fast"
               d="M820 120 L820 85
                  M820 120 L855 120
-                 M820 120 L785 120
-                 M820 120 L845 95
-                 M820 120 L795 95" />
+                 M820 120 L785 120" />
 
-            <!-- Roller coaster hill -->
             <path class="skyline-stroke draw-med"
               d="M880 135
                  C910 120, 940 120, 970 135
@@ -134,6 +115,13 @@
           <p>Protection designed for businesses.</p>
         </div>
       </section>
+
+      <!-- CTA AFTER SERVICES -->
+      <section class="quote-section">
+        <a href="#" id="quoteBtn" class="pill-btn pill-btn-lg">
+          Get a Quote
+        </a>
+      </section>
     </main>
 
     <footer>
@@ -150,21 +138,18 @@
       formId: "260355748814060",
       base: "https://form.jotform.com/",
       windowTitle: "Ortiz Agency Intake Form",
-      background: "#003a8f",     // Farmers Blue
+      background: "#003a8f",   // Farmers Blue
       fontColor: "#FFFFFF",
-      type: "2",                // Lightbox / modal
+      type: "2",              // Lightbox
       height: 700,
       width: 900,
       openOnLoad: false
     });
 
-    function openQuote(e) {
+    document.getElementById("quoteBtn").addEventListener("click", function(e) {
       e.preventDefault();
       JF_Quote.open();
-    }
-
-    document.getElementById("quoteBtnHero").addEventListener("click", openQuote);
-    document.getElementById("quoteBtnNav").addEventListener("click", openQuote);
+    });
 
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
