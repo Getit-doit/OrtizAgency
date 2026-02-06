@@ -27,14 +27,17 @@
 
       <div class="form-embed">
         <iframe
-          id="JotFormIFrame-260355748814060"
           title="Ortiz Agency Intake Form"
           src="https://form.jotform.com/260355748814060"
           allow="geolocation; microphone; camera"
           frameborder="0"
-          scrolling="no"
+          scrolling="yes"
         ></iframe>
       </div>
+
+      <p class="quote-help">
+        Prefer to talk? <a href="tel:+1-000-000-0000">Call us</a>.
+      </p>
     </main>
 
     <footer>
@@ -46,23 +49,6 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Track quote page view
-    if (typeof window.gtag === "function") {
-      window.gtag("event", "quote_page_view", { page: "quote.html" });
-    } else {
-      console.log("[trackEvent]", "quote_page_view", { page: "quote.html" });
-    }
   </script>
-
-<div class="form-embed">
-  <iframe
-    title="Ortiz Agency Intake Form"
-    src="https://form.jotform.com/260355748814060"
-    allow="geolocation; microphone; camera"
-    frameborder="0"
-    scrolling="yes"
-  ></iframe>
-</div>
 </body>
 </html>
