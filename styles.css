@@ -15,7 +15,7 @@ html, body {
   color: var(--dark-gray);
 }
 
-/* Page wrapper */
+/* Page frame */
 .page-wrapper {
   min-height: 100vh;
   margin: 16px;
@@ -25,13 +25,14 @@ html, body {
   overflow: hidden;
 }
 
-/* Navigation */
+/* Top nav */
 nav {
   display: flex;
   gap: 18px;
   padding: 18px 24px;
   background: var(--farmers-blue);
   flex-wrap: wrap;
+  align-items: center;
 }
 
 nav a {
@@ -47,17 +48,148 @@ nav a.active {
   border-bottom: 3px solid var(--farmers-red);
 }
 
-/* Quote page */
-.quote-embed-section {
-  padding: 50px 20px 60px;
-  max-width: 1000px;
-  margin: 0 auto;
-  text-align: center;            /* center headings + embed */
+/* HERO (home page) */
+.hero {
+  padding: 80px 20px 60px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--farmers-blue), #002b6f);
+  color: #ffffff;
 }
 
-.quote-embed-section h1 {
+.hero h1 {
+  font-size: 2.6rem;
+  margin: 0 0 10px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  margin: 0;
+}
+
+/* Generic content section (home + privacy can use this) */
+.importance-section {
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.importance-section h1 {
+  color: var(--farmers-blue);
+  margin: 0 0 12px;
+}
+
+.importance-section h2 {
+  color: var(--farmers-blue);
+  margin: 0 0 12px;
+}
+
+.importance-section p {
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+
+/* Service cards (home page) */
+.insurance-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.insurance-card {
+  border: 1px solid #ddd;
+  padding: 26px 20px;
+  text-align: center;
+  border-radius: 8px;
+  background: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.insurance-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.icon-wrapper {
+  font-size: 32px;
+  color: var(--farmers-red);
+  margin-bottom: 12px;
+}
+
+.insurance-card h3 {
   color: var(--farmers-blue);
   margin: 0 0 8px;
+}
+
+/* CTA after services (home page) */
+.quote-jump {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 20px 55px;
+  gap: 12px;
+}
+
+.square-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  padding: 16px 28px;
+  background: var(--farmers-red);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 900;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.20);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.square-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+  opacity: 0.96;
+}
+
+.quote-note {
+  margin: 0;
+  color: #444;
+  font-size: 14px;
+  text-align: center;
+  max-width: 640px;
+}
+
+/* -------------------------
+   QUOTE PAGE (scoped styles)
+   ------------------------- */
+
+/* Blue title bar ONLY if quote.html includes .quote-header */
+.quote-header {
+  background: var(--farmers-blue);
+  padding: 36px 20px;
+  text-align: center;
+  border-bottom: 3px solid var(--farmers-red);
+}
+
+.quote-header h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.quote-embed-section {
+  padding: 40px 20px 60px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .quote-subtext {
@@ -66,7 +198,7 @@ nav a.active {
   line-height: 1.5;
 }
 
-/* Embedded form container (CENTERED) */
+/* Embedded form container */
 .form-embed {
   max-width: 720px;
   border: 2px solid rgba(0,0,0,0.12);
@@ -76,17 +208,15 @@ nav a.active {
 }
 
 .form-embed.centered {
-  margin: 0 auto;                /* <-- centers the form */
+  margin: 0 auto; /* centers the form */
 }
 
-/* Jotform iframe */
 .form-embed iframe {
   width: 100%;
-  height: 1150px;                /* stable desktop height */
+  height: 1150px; /* desktop stable height */
   border: 0;
 }
 
-/* Help text */
 .quote-help {
   margin-top: 16px;
   color: #444;
@@ -102,15 +232,10 @@ nav a.active {
   text-decoration: underline;
 }
 
-/* Mobile */
+/* Mobile adjustments */
 @media (max-width: 768px) {
-  .form-embed {
-    max-width: 100%;
-  }
-
-  .form-embed iframe {
-    height: 1450px;              /* stacked fields */
-  }
+  .form-embed { max-width: 100%; }
+  .form-embed iframe { height: 1450px; }
 }
 
 /* Footer */
@@ -130,24 +255,3 @@ footer a {
 }
 
 footer a:hover { text-decoration: underline; }
-/* Quote page title bar */
-.quote-header {
-  background: var(--farmers-blue);
-  padding: 36px 20px;
-  text-align: center;
-  border-bottom: 3px solid var(--farmers-red);
-}
-
-.quote-header h1 {
-  margin: 0;
-  color: #ffffff;
-  font-size: 2.2rem;
-  font-weight: 900;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-}
-
-/* Adjust spacing below header */
-.quote-embed-section {
-  padding-top: 40px;
-}
